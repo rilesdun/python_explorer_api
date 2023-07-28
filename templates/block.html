@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Block Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    {% if should_refresh %}
+    <meta http-equiv="refresh" content="3">
+    {% endif %}
+</head>
+<body class="bg-black text-white font-sans">
+    <nav class="bg-gray-800 p-2 mt-0 w-full">
+        <div class="flex flex-wrap items-center pl-0 md:pl-0">
+            <div class="flex w-full md:w-1/2 justify-start text-white font-extrabold">
+                <a class="text-white no-underline hover:text-white hover:no-underline" href="/">
+                    <span class="text-2xl">Peerplays Explorer</span>
+                </a>
+            </div>
+            <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+                <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+                    <li class="mr-3">
+                        <a class="inline-block py-2 px-4 text-white no-underline" href="/">Blocks</a>
+                    </li>
+                    <li class="mr-3 relative group">
+                        <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="{{ url_for('accounts') }}">Accounts</a>
+                        <ul class="absolute left-0 mt-2 space-y-2 bg-gray-800 text-white px-2 py-2 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <li><a href="{{ url_for('activeWitnesses') }}" class="block px-4 py-2 hover:bg-gray-700">Witnesses</a></li>
+                            <!-- add sons page here -->
+                        </ul>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="{{ url_for('assets') }}">Assets</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h1 class="text-green-500">Block Information</h1>
+    <p>Current block number: {{ block_info["Current block number"] }}</p>
+    <p>Next block number: 
+        <a href="{{ url_for('block', block_num=block_info['Current block number'] + 1) }}" class="text-blue-500 hover:text-green-500">
+            {{ block_info["Current block number"] + 1 }}
+        </a>
+    </p>
+    <p>Previous block number: 
+        {% if block_info["Previous block number"] > 0 %}
+        <a href="{{ url_for('block', block_num=block_info['Previous block number']) }}" class="text-blue-500 hover:text-green-500">
+            {{ block_info["Previous block number"] }}
+        </a>
+        {% else %}
+        {{ block_info["Previous block number"] }}
+        {% endif %}
+    </p>
+    <p>Previous block ID: 
+        {% if block_info["Previous block number"] > 0 %}
+        <a href="{{ url_for('block', block_num=block_info['Previous block number']) }}" class="text-blue-500 hover:text-green-500">
+            {{ block_info["Previous block ID"] }}
+        </a>
+        {% else %}
+        {{ block_info["Previous block ID"] }}
+        {% endif %}
+    </p>
+    <p>Witness ID: {{ block_info["Witness ID"] }}</p>
+    <p>Witness Name: {{ block_info["Witness Name"] }} </p>
+
+    <p>Transactions:</p>
+    {% for transaction in block_info["Transactions"] %}
+    <div class="table-responsive">
+        <table class="w-full mb-4 text-white divide-y divide-gray-200">
+            <tbody>
+                {% for key, value in transaction.items() %}
+                    <tr class="border-t border-gray-200">
+                        <td class="p-3">{{ key }}</td>
+                        <td class="p-3">{{ value }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <hr class="border-t border-gray-200">
+{% endfor %}
+</body>
+</html>
