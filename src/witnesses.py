@@ -6,7 +6,6 @@ from peerplays.account import Account
 peerplays = PeerPlays("wss://ca.peerplays.info/api")
 
 def list_active_witnesses():
-    # grab list of active witnesses
     witnesses = Witnesses(blockchain_instance=peerplays)
     witness_info = []
 
@@ -15,7 +14,10 @@ def list_active_witnesses():
         account = Account(witness["witness_account"], blockchain_instance=peerplays)
         witness_info.append({
             "account_name": account['name'],
+        
             "witness_data": {key: value for key, value in witness.items()}
         })
+        
+        witness_info = sorted(witness_info, key=lambda x: x['witness_data']['total_votes'], reverse=True)
 
     return witness_info
