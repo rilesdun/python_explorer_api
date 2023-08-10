@@ -16,6 +16,9 @@ def get_block_info(block_num=None):
         block = Block(block_num, blockchain_instance=peerplays)
 
         witness = Witness(block["witness"], blockchain_instance=peerplays)
+
+        num_transactions = len(block["transactions"])
+
         
 
         # create a dictionary with the block information
@@ -25,7 +28,8 @@ def get_block_info(block_num=None):
             "Previous block ID": block["previous"],
             "Witness ID": block["witness"],
             "Witness Name": witness.account["name"],
-            "Transactions": block["transactions"]
+            "Transactions": block["transactions"],
+            "Number of Transactions": num_transactions
         }
 
         return block_info
