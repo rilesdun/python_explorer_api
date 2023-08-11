@@ -1,3 +1,4 @@
+import logging
 from flask import Flask, render_template
 from flask import jsonify
 from flask_cors import CORS
@@ -8,6 +9,8 @@ from src.getLatestTransactions import get_latest_transactions
 
 app = Flask(__name__)
 CORS(app)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
 
 @app.route('/', methods=['GET'])
 def latest_block():

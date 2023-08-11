@@ -1,10 +1,14 @@
 import json
+import logging
 from peerplays import PeerPlays
 from peerplays.block import Block
 from peerplays.witness import Witness
 
+logger = logging.getLogger(__name__)
+
 # connect to a peerplays1 node
 peerplays = PeerPlays("wss://ca.peerplays.info/api")
+
 
 def get_block_info(block_num=None):
     try:
@@ -32,7 +36,9 @@ def get_block_info(block_num=None):
             "Number of Transactions": num_transactions
         }
 
+        logger.info(f"Successfully fetched block {block_num}")
         return block_info
+    
     except Exception as e:
-        print(f"Error fetching block {block_num}: {e}")
+        logger.error(f"Error fetching block {block_num}: {e}", exc_info=True)
         return None

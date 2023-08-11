@@ -1,9 +1,12 @@
 from peerplays import PeerPlays
 from peerplays.witness import Witnesses
 from peerplays.account import Account
+import logging
 
 # connect to a peerplays1 node
 peerplays = PeerPlays("wss://ca.peerplays.info/api")
+
+logger = logging.getLogger(__name__)
 
 def list_active_witnesses():
     witnesses = Witnesses(blockchain_instance=peerplays)
@@ -19,5 +22,6 @@ def list_active_witnesses():
         })
         
         witness_info = sorted(witness_info, key=lambda x: x['witness_data']['total_votes'], reverse=True)
-
+        
+    logger.info(f"Successfully fetched {len(witness_info)} active witnesses")
     return witness_info
