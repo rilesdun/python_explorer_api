@@ -37,6 +37,11 @@ class LatestBlockNamespace(Namespace):
 # Register the namespace at the desired endpoint
 socketio.on_namespace(LatestBlockNamespace('/api/latest_block'))
 
+@app.route('/api/latest_block_num', methods=['GET'])
+def latest_block_num():
+    latest_block = get_latest_block()
+    return jsonify(latest_block_num=latest_block['block_num'])
+
 @app.route('/api/supply', methods=['GET'])
 def supply():
     asset_id = request.args.get("asset", "1.3.0")
