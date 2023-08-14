@@ -4,6 +4,7 @@ appdirs==1.4.3
 async-timeout==4.0.2
 asyncinit==0.2.4
 attrs==23.1.0
+bidict==0.22.1
 blinker==1.6.2
 certifi==2023.7.22
 charset-normalizer==3.2.0
@@ -12,8 +13,11 @@ ecdsa==0.18.0
 Events==0.4
 expiringdict==1.2.2
 Flask==2.3.2
+Flask-Cors==4.0.0
+Flask-SocketIO==5.3.5
 frozenlist==1.4.0
 graphenelib==1.5.4
+h11==0.14.0
 idna==3.4
 itsdangerous==2.1.2
 Jinja2==3.1.2
@@ -23,9 +27,12 @@ peerplays==0.5.3
 prettytable==3.8.0
 pycryptodome==3.18.0
 pylibscrypt==1.8.0
+python-engineio==4.5.1
+python-socketio==5.8.0
 PyYAML==6.0.1
 requests==2.31.0
 scrypt==0.8.13
+simple-websocket==0.10.1
 six==1.16.0
 treelib==1.6.4
 urllib3==2.0.4
@@ -33,4 +40,5 @@ wcwidth==0.2.6
 websocket-client==0.59.0
 websockets==11.0.3
 Werkzeug==2.3.6
+wsproto==1.2.0
 yarl==1.9.2
