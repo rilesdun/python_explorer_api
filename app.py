@@ -1,8 +1,10 @@
 import logging
 import time
+
 from flask import Flask, render_template
 from flask import jsonify
 from flask import request
+from cache_config import cache
 from flask_cors import CORS
 from flask_socketio import SocketIO
 from flask_socketio import Namespace
@@ -32,15 +34,26 @@ from src.supply.richList import rich_list
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}) # You can specify your specific origins instead of "*"
+cache.init_app(app)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 socketio = SocketIO(app, cors_allowed_origins="*") # You can specify your specific origins instead of "*"
 
 class LatestBlockNamespace(Namespace):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.should_stop = False
+
     def on_connect(self):
+        print('Client connected')
+        self.should_stop = False
         socketio.start_background_task(self.background_thread)
 
+    def on_disconnect(self):
+        print('Client disconnected')
+        self.should_stop = True
+
     def background_thread(self):
-        while True:
+        while not self.should_stop:
             block = get_latest_block()
             block_num = block['block_num'] if block else None
             self.emit('block update', {'block_num': block_num})
@@ -92,14 +105,6 @@ def transactions():
     transactions = get_latest_transactions()
     return jsonify(transactions=transactions)
 
-@app.route('/api/accounts', methods=['GET'])
-def accounts():
-    witness_list = list_all_accounts()
-    if witness_list is not None:
-        return jsonify(witness_list=witness_list)
-    else:
-        return "Error fetching witness information", 400
-    
 @app.route('/api/accounts/witnesses', methods=['GET'])
 def activeWitnesses():
     witness_list = list_active_witnesses()
