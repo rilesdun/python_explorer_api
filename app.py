@@ -11,12 +11,24 @@ from peerplays.peerplays import PeerPlays
 from peerplays.asset import Asset
 from peerplays.amount import Amount
 
+from src.accounts.witnesses.active_witnesses import list_active_witnesses
+from src.accounts.witnesses.witness_count import witness_count
+
 from src.blocks import get_block_info
-from src.witnesses import list_active_witnesses
-from src.allAccounts import list_all_accounts
+
 from src.getLatestTransactions import get_latest_transactions
 from src.latestBlock import get_latest_block
-from src.max_supply import get_supply
+
+from src.supply.common import get_supplies, peerplays
+from src.supply.supply_details import get_supply_details
+from src.supply.max_supply import max_supply
+from src.supply.total_supply import total_supply
+from src.supply.circulating_supply import circulating_supply
+from src.supply.richList import rich_list
+
+
+
+
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}) # You can specify your specific origins instead of "*"
@@ -45,8 +57,27 @@ def latest_block_num():
 @app.route('/api/supply', methods=['GET'])
 def supply():
     asset_id = request.args.get("asset", "1.3.0")
-    supplies = get_supply(asset_id)
-    return jsonify(supplies)
+    supplies = get_supply_details(asset_id)
+    return supplies
+
+
+# max and total are the same, not sure why peerplays asset api has both
+@app.route('/api/max_supply', methods=['GET'])
+def max_supply_route():
+    return max_supply()
+
+@app.route('/api/total_supply', methods=['GET'])
+def total_supply_route():
+    return total_supply()
+
+@app.route('/api/circulating_supply', methods=['GET'])
+def circulating_supply_route():
+    return circulating_supply()
+
+@app.route('/api/rich_list', methods=['GET'])
+def rich_list_route():
+    return rich_list()
+
 
 @app.route('/api/block/<int:block_num>', methods=['GET'])
 def block(block_num):
@@ -81,8 +112,7 @@ def activeWitnesses():
 
 @app.route('/api/accounts/witness_count', methods=['GET'])
 def get_witnesses():
-    witness_list = list_active_witnesses()
-    return jsonify(witness_count=len(witness_list), witnesses=witness_list)
+    return witness_count()
 
 
 if __name__ == '__main__':

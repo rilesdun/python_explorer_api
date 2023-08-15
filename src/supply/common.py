@@ -1,5 +1,8 @@
+from peerplays.peerplays import PeerPlays
 from peerplays.asset import Asset
-from peerplays import PeerPlays
+from peerplays.amount import Amount
+
+peerplays = PeerPlays("wss://ca.peerplays.info/api")
 
 def sats_to_fixed(amount, P):
     V = int(amount) / 10**P
@@ -17,11 +20,3 @@ def get_supplies(asset):
         "total": max_supply,
         "circulating": current_supply
     }
-
-
-def get_supply(asset_id="1.3.0"):
-    peerplays = PeerPlays("wss://ca.peerplays.info/api")
-    A = Asset(asset_id, blockchain_instance=peerplays)
-    supplies = get_supplies(A)
-
-    return supplies

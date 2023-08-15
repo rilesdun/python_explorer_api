@@ -17,11 +17,10 @@ def list_active_witnesses():
         account = Account(witness["witness_account"], blockchain_instance=peerplays)
         witness_info.append({
             "account_name": account['name'],
-        
             "witness_data": {key: value for key, value in witness.items()}
         })
         
-        witness_info = sorted(witness_info, key=lambda x: x['witness_data']['total_votes'], reverse=True)
+    witness_info = sorted(witness_info, key=lambda x: x['witness_data']['total_votes'], reverse=True)
         
     logger.info(f"Successfully fetched {len(witness_info)} active witnesses")
     return witness_info
