@@ -1,6 +1,9 @@
 import logging
 import time
 
+from peerplays.exceptions import AccountDoesNotExistsException
+
+
 from flask import Flask, render_template
 from flask import jsonify
 from flask import request
@@ -13,6 +16,7 @@ from peerplays.peerplays import PeerPlays
 from peerplays.asset import Asset
 from peerplays.amount import Amount
 
+from src.accounts.getAccount import get_account_info
 from src.accounts.witnesses.active_witnesses import list_active_witnesses
 from src.accounts.witnesses.witness_count import witness_count
 
@@ -104,6 +108,17 @@ def block(block_num):
 def transactions():
     transactions = get_latest_transactions()
     return jsonify(transactions=transactions)
+
+@app.route('/api/accounts/<string:account_name>', methods=['GET'])
+def account_info(account_name):
+    try:
+        account_info = get_account_info(account_name)
+        return jsonify(account_info=account_info)
+    except AccountDoesNotExistsException:
+        return jsonify(error="Account does not exist"), 404
+    except Exception as e:
+        return str(e), 400
+
 
 @app.route('/api/accounts/witnesses', methods=['GET'])
 def activeWitnesses():
