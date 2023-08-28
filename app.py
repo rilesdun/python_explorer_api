@@ -19,6 +19,8 @@ from peerplays.amount import Amount
 from src.accounts.getAccount import get_account_info
 from src.accounts.witnesses.active_witnesses import list_active_witnesses
 from src.accounts.witnesses.witness_count import witness_count
+from src.accounts.accountHistory import get_account_history
+
 
 from src.blocks import get_block_info
 
@@ -71,29 +73,53 @@ def latest_block_num():
     latest_block = get_latest_block()
     return jsonify(latest_block_num=latest_block['block_num'])
 
-@app.route('/api/supply', methods=['GET'])
-def supply():
+@app.route('/api/supply/ppy', methods=['GET'])
+def supply_ppy():
     asset_id = request.args.get("asset", "1.3.0")
     supplies = get_supply_details(asset_id)
     return supplies
 
+@app.route('/api/supply/btfun', methods=['GET'])
+def supply_btfun():
+    asset_id = request.args.get("asset", "1.3.1")
+    supplies = get_supply_details(asset_id)
+    return supplies
+
+@app.route('/api/supply/bitcoin', methods=['GET'])
+def supply_btc():
+    asset_id = request.args.get("asset", "1.3.22")
+    supplies = get_supply_details(asset_id)
+    return supplies
+
+@app.route('/api/supply/hive', methods=['GET'])
+def supply_hive():
+    asset_id = request.args.get("asset", "1.3.24")
+    supplies = get_supply_details(asset_id)
+    return supplies
+
+@app.route('/api/supply/hbd', methods=['GET'])
+def supply_hbd():
+    asset_id = request.args.get("asset", "1.3.23")
+    supplies = get_supply_details(asset_id)
+    return supplies
 
 # max and total are the same, not sure why peerplays asset api has both
-@app.route('/api/max_supply', methods=['GET'])
-def max_supply_route():
-    return max_supply()
+@app.route('/api/max_supply/<string:coin_name>', methods=['GET'])
+def max_supply_route(coin_name):
+    return max_supply(coin_name)
 
-@app.route('/api/total_supply', methods=['GET'])
-def total_supply_route():
-    return total_supply()
+@app.route('/api/total_supply/<string:coin_name>', methods=['GET'])
+def total_supply_route(coin_name):
+    return total_supply(coin_name)
 
-@app.route('/api/circulating_supply', methods=['GET'])
-def circulating_supply_route():
-    return circulating_supply()
+@app.route('/api/circulating_supply/<string:coin_name>', methods=['GET'])
+def circulating_supply_route(coin_name):
+    return circulating_supply(coin_name)
 
-@app.route('/api/rich_list', methods=['GET'])
-def rich_list_route():
-    return rich_list()
+@app.route('/api/rich_list/<string:coin_name>', methods=['GET'])
+def rich_list_route(coin_name):
+    num = request.args.get("num", "25")
+    return rich_list(coin_name, num)
 
 
 @app.route('/api/block/<int:block_num>', methods=['GET'])
@@ -109,6 +135,11 @@ def transactions():
     transactions = get_latest_transactions()
     return jsonify(transactions=transactions)
 
+@app.route('/api/account_history/<account_name>')
+def account_history(account_name):
+    history = get_account_history(account_name)
+    return jsonify(history)
+
 @app.route('/api/accounts/<string:account_name>', methods=['GET'])
 def account_info(account_name):
     try:
@@ -118,7 +149,7 @@ def account_info(account_name):
         return jsonify(error="Account does not exist"), 404
     except Exception as e:
         return str(e), 400
-
+    
 
 @app.route('/api/accounts/witnesses', methods=['GET'])
 def activeWitnesses():

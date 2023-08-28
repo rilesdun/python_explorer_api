@@ -1,10 +1,12 @@
-from .common import sats_to_fixed, peerplays
+from .common import sats_to_fixed, peerplays, ASSET_IDS
 from peerplays.asset import Asset
-from flask import jsonify, request
+from flask import jsonify
 
-def rich_list():
-    asset_id = request.args.get("asset", "1.3.0")
-    limit = int(request.args.get("num", "25"))
+def rich_list(coin_name, num="25"):
+    asset_id = ASSET_IDS.get(coin_name)
+    if asset_id is None:
+        return jsonify({"error": "Invalid coin name"}), 400
+    limit = int(num)
     A = Asset(asset_id, blockchain_instance=peerplays)
     P = A["precision"]
     richlist = A.blockchain.rpc.get_asset_holders(asset_id, 0, limit, api="asset")

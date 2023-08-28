@@ -4,6 +4,14 @@ from peerplays.amount import Amount
 
 peerplays = PeerPlays("wss://ca.peerplays.info/api")
 
+ASSET_IDS = {
+    "ppy": "1.3.0",
+    "btfun": "1.3.1",
+    "bitcoin": "1.3.22",
+    "hive": "1.3.24",
+    "hbd": "1.3.23"
+    }
+
 def sats_to_fixed(amount, P):
     V = int(amount) / 10**P
     return "{:.{prec}f}".format(V, prec=P)

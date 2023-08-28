@@ -1,9 +1,11 @@
-from .common import get_supplies, peerplays
+from .common import get_supplies, peerplays, ASSET_IDS
 from peerplays.asset import Asset
-from flask import Response, request
+from flask import Response
 
-def circulating_supply():
-    asset_id = request.args.get("asset", "1.3.0")
+def circulating_supply(coin_name):
+    asset_id = ASSET_IDS.get(coin_name)
+    if asset_id is None:
+        return Response("Invalid coin name", status=400)
     A = Asset(asset_id, blockchain_instance=peerplays)
     supply = get_supplies(A)["circulating"]
-    return Response(supply, content_type='application/json')
+    return Response(supply, content_type='text/plain')
