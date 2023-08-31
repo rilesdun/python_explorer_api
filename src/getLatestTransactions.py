@@ -1,7 +1,8 @@
 from peerplays import PeerPlays
 from peerplays.block import Block
+from config import api_url
 
-peerplays = PeerPlays("wss://ca.peerplays.info/api")
+peerplays = PeerPlays(api_url)
 
 def get_block_with_transactions(block_num):
     block = Block(block_num, blockchain_instance=peerplays)

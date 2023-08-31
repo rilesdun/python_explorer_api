@@ -1,5 +1,6 @@
 import logging
 import time
+from config import api_url
 
 from peerplays.exceptions import AccountDoesNotExistsException
 
@@ -39,6 +40,7 @@ from src.supply.richList import rich_list
 
 
 app = Flask(__name__)
+
 CORS(app, resources={r"/*": {"origins": "*"}}) # You can specify your specific origins instead of "*"
 cache.init_app(app)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
