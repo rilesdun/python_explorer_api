@@ -21,6 +21,7 @@ from src.accounts.getAccount import get_account_info
 from src.accounts.witnesses.active_witnesses import list_active_witnesses
 from src.accounts.witnesses.witness_count import witness_count
 from src.accounts.accountHistory import get_account_history
+from src.accounts.sons.activeSons import get_active_sons
 
 
 from src.blocks import get_block_info
@@ -167,6 +168,10 @@ def activeWitnesses():
 def get_witnesses():
     return witness_count()
 
+@app.route('/api/accounts/active_sons', methods=['GET'])
+def active_sons():
+    sons = get_active_sons()
+    return sons
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
