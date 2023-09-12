@@ -1,7 +1,8 @@
 from peerplays.account import Account
 from peerplays import PeerPlays
+from config import api_url
 
-peerplays = PeerPlays("wss://ca.peerplays.info/api")
+peerplays = PeerPlays(api_url)
 
 def get_account_info(account_name):
     account = Account(account_name, blockchain_instance=peerplays)
@@ -12,6 +13,5 @@ def get_account_info(account_name):
         "active": account["active"],
         "options": account["options"],
         "balances": account.balances,
-        # Add any other attributes you need here
     }
     return account_info

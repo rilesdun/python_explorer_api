@@ -42,7 +42,14 @@ from src.supply.richList import rich_list
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/*": {"origins": "*"}}) # You can specify your specific origins instead of "*"
+# need to get correct origins - bad practice for CORS "*"
+
+allowed_origins = [
+    'http://localhost:5000',
+    'http://localhost:8080/*'
+]
+
+CORS(app, resources={r"/*": {"origins": allowed_origins}})
 cache.init_app(app)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 socketio = SocketIO(app, cors_allowed_origins="*") # You can specify your specific origins instead of "*"

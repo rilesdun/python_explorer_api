@@ -3,11 +3,13 @@ import logging
 from peerplays import PeerPlays
 from peerplays.block import Block
 from peerplays.witness import Witness
+from config import api_url
 
 logger = logging.getLogger(__name__)
 
-# connect to a peerplays1 node
-peerplays = PeerPlays("wss://ca.peerplays.info/api")
+
+
+peerplays = PeerPlays(api_url)
 
 
 def get_block_info(block_num=None):

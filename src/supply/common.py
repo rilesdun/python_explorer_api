@@ -1,8 +1,9 @@
 from peerplays.peerplays import PeerPlays
 from peerplays.asset import Asset
 from peerplays.amount import Amount
+from config import api_url
 
-peerplays = PeerPlays("wss://ca.peerplays.info/api")
+peerplays = PeerPlays(api_url)
 
 ASSET_IDS = {
     "ppy": "1.3.0",

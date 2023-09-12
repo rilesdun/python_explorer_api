@@ -17,7 +17,7 @@ def get_latest_transactions(num_transactions=10):
     latest_block_num = peerplays.info()["head_block_number"]
     transactions = []
 
-    for block_num in range(latest_block_num, latest_block_num - 1000, -1):
+    for block_num in range(latest_block_num, latest_block_num - 50, -1):
         block = get_block_with_transactions(block_num)
         if block:
             transactions.extend(block["transactions"])
