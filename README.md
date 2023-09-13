@@ -12,4 +12,4 @@ Run in development mode:
 
 Run in production mode:
 
-- `gunicorn -k geventwebsocket.gunicorn.workers.GeventWebSocketWorker -c gunicorn_config.py app:app`
+- `gunicorn -k eventlet -w 1 -c gunicorn_config.py app:app`

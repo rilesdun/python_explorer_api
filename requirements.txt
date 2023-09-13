@@ -10,7 +10,9 @@ cachelib==0.9.0
 certifi==2023.7.22
 charset-normalizer==3.2.0
 click==8.1.6
+dnspython==2.4.2
 ecdsa==0.18.0
+eventlet==0.33.3
 Events==0.4
 expiringdict==1.2.2
 Flask==2.3.2

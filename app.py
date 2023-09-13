@@ -44,12 +44,7 @@ app = Flask(__name__)
 
 # need to get correct origins - bad practice for CORS "*"
 
-allowed_origins = [
-    'http://localhost:5000',
-    'http://localhost:8080/*'
-]
-
-CORS(app, resources={r"/*": {"origins": allowed_origins}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 cache.init_app(app)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 socketio = SocketIO(app, cors_allowed_origins="*") # You can specify your specific origins instead of "*"
@@ -72,8 +67,9 @@ class LatestBlockNamespace(Namespace):
         while not self.should_stop:
             block = get_latest_block()
             block_num = block['block_num'] if block else None
+            logging.info(f"Background Task: Successfully fetched block {block_num}")
             self.emit('block update', {'block_num': block_num})
-            time.sleep(1) # Adjust this based on the actual block time
+            time.sleep(1.5)
 
 # Register the namespace at the desired endpoint
 socketio.on_namespace(LatestBlockNamespace('/api/latest_block'))
@@ -136,6 +132,7 @@ def rich_list_route(coin_name):
 def block(block_num):
     block_info = get_block_info(block_num)
     if block_info is not None:
+        logging.info(f"Page Load: Successfully fetched block {block_num}")
         return jsonify(block_info=block_info)
     else:
         return "Error fetching block information", 400
