@@ -47,32 +47,6 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 cache.init_app(app)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-socketio = SocketIO(app, cors_allowed_origins="*") # You can specify your specific origins instead of "*"
-
-class LatestBlockNamespace(Namespace):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.should_stop = False
-
-    def on_connect(self):
-        print('Client connected')
-        self.should_stop = False
-        socketio.start_background_task(self.background_thread)
-
-    def on_disconnect(self):
-        print('Client disconnected')
-        self.should_stop = True
-
-    def background_thread(self):
-        while not self.should_stop:
-            block = get_latest_block()
-            block_num = block['block_num'] if block else None
-            logging.info(f"Background Task: Successfully fetched block {block_num}")
-            self.emit('block update', {'block_num': block_num})
-            time.sleep(1.5)
-
-# Register the namespace at the desired endpoint
-socketio.on_namespace(LatestBlockNamespace('/api/latest_block'))
 
 @app.route('/api/latest_block_num', methods=['GET'])
 def latest_block_num():

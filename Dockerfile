@@ -13,4 +13,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 5000
 
-CMD ["gunicorn", "-k", "eventlet", "-w", "1", "-c", "gunicorn_config.py", "app:app"]
+CMD ["gunicorn", "-k", "eventlet", "-c", "gunicorn_config.py", "app:app"]
