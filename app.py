@@ -80,43 +80,65 @@ def supply_btfun():
 
 @app.route('/api/supply/bitcoin', methods=['GET'])
 def supply_btc():
+    """
+    This endpoint returns the supply details for the asset 'bitcoin'.
+    """
     asset_id = request.args.get("asset", "1.3.22")
     supplies = get_supply_details(asset_id)
     return supplies
 
 @app.route('/api/supply/hive', methods=['GET'])
 def supply_hive():
+    """
+    This endpoint returns the supply details for the asset 'hive'.
+    """
     asset_id = request.args.get("asset", "1.3.24")
     supplies = get_supply_details(asset_id)
     return supplies
 
 @app.route('/api/supply/hbd', methods=['GET'])
 def supply_hbd():
+    """
+    This endpoint returns the supply details for the asset 'hbd'.
+    """
     asset_id = request.args.get("asset", "1.3.23")
     supplies = get_supply_details(asset_id)
     return supplies
 
-# max and total are the same, not sure why peerplays asset api has both
 @app.route('/api/max_supply/<string:coin_name>', methods=['GET'])
 def max_supply_route(coin_name):
+    """
+    This endpoint returns the maximum supply for the given coin name.
+    """
     return max_supply(coin_name)
 
 @app.route('/api/total_supply/<string:coin_name>', methods=['GET'])
 def total_supply_route(coin_name):
+    """
+    This endpoint returns the total supply for the given coin name.
+    """
     return total_supply(coin_name)
 
 @app.route('/api/circulating_supply/<string:coin_name>', methods=['GET'])
 def circulating_supply_route(coin_name):
+    """
+    This endpoint returns the circulating supply for the given coin name.
+    """
     return circulating_supply(coin_name)
 
 @app.route('/api/rich_list/<string:coin_name>', methods=['GET'])
 def rich_list_route(coin_name):
+    """
+    This endpoint returns the rich list for the given coin name.
+    """
     num = request.args.get("num", "25")
     return rich_list(coin_name, num)
 
-
 @app.route('/api/block/<int:block_num>', methods=['GET'])
 def block(block_num):
+    """
+    This endpoint returns the block information for the given block number.
+    """
     block_info = get_block_info(block_num)
     if block_info is not None:
         logging.info(f"Page Load: Successfully fetched block {block_num}")
@@ -126,16 +148,25 @@ def block(block_num):
 
 @app.route('/api/transactions')
 def transactions():
+    """
+    This endpoint returns the latest transactions.
+    """
     transactions = get_latest_transactions()
     return jsonify(transactions=transactions)
 
 @app.route('/api/account_history/<account_name>')
 def account_history(account_name):
+    """
+    This endpoint returns the account history for the given account name.
+    """
     history = get_account_history(account_name)
     return jsonify(history)
 
 @app.route('/api/accounts/<string:account_name>', methods=['GET'])
 def account_info(account_name):
+    """
+    This endpoint returns the account information for the given account name.
+    """
     try:
         account_info = get_account_info(account_name)
         return jsonify(account_info=account_info)
@@ -147,6 +178,9 @@ def account_info(account_name):
 
 @app.route('/api/accounts/witnesses', methods=['GET'])
 def activeWitnesses():
+    """
+    This endpoint returns the list of active witnesses.
+    """
     witness_list = list_active_witnesses()
     default_attributes = ['id', 'witness_account', 'signing_key', 'total_votes', 'url', 'total_missed', 'last_confirmed_block_num']
 
@@ -157,10 +191,16 @@ def activeWitnesses():
 
 @app.route('/api/accounts/witness_count', methods=['GET'])
 def get_witnesses():
+    """
+    This endpoint returns the count of witnesses.
+    """
     return witness_count()
 
 @app.route('/api/accounts/active_sons', methods=['GET'])
 def active_sons():
+    """
+    This endpoint returns the list of active sons.
+    """
     sons = get_active_sons()
     return sons
 
