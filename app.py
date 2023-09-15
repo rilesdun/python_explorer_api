@@ -1,3 +1,7 @@
+"""
+This is the main application module.
+"""
+
 import logging
 import time
 from config import api_url
@@ -50,17 +54,26 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 
 @app.route('/api/latest_block_num', methods=['GET'])
 def latest_block_num():
+    """
+    This endpoint returns the latest block number.
+    """
     latest_block = get_latest_block()
     return jsonify(latest_block_num=latest_block['block_num'])
 
 @app.route('/api/supply/ppy', methods=['GET'])
 def supply_ppy():
+    """
+    This endpoint returns the supply details for the asset 'ppy'.
+    """
     asset_id = request.args.get("asset", "1.3.0")
     supplies = get_supply_details(asset_id)
     return supplies
 
 @app.route('/api/supply/btfun', methods=['GET'])
 def supply_btfun():
+    """
+    This endpoint returns the supply details for the asset 'btfun'.
+    """
     asset_id = request.args.get("asset", "1.3.1")
     supplies = get_supply_details(asset_id)
     return supplies
