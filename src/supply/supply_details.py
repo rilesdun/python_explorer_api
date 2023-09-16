@@ -1,6 +1,7 @@
-from .common import get_supplies
 from peerplays.asset import Asset
 from peerplays import PeerPlays
+from src.supply.common import get_supplies
+
 
 def get_supply_details(asset_id="1.3.0"):
     peerplays = PeerPlays("wss://ca.peerplays.info/api")

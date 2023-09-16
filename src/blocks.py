@@ -1,4 +1,7 @@
-import json
+"""
+Functions related to peerplays blocks
+"""
+
 import logging
 from peerplays import PeerPlays
 from peerplays.block import Block
@@ -13,6 +16,17 @@ peerplays = PeerPlays(api_url)
 
 
 def get_block_info(block_num=None):
+    """
+    Fetches and returns information about a specific block in the PeerPlays blockchain.
+
+    If no block number is provided, information about the latest block is returned.
+
+    :param block_num: The number of the block to fetch information about.. 
+    If None, fetches the latest block.
+    :type block_num: int, optional
+    :return: A dictionary containing information about the block, or None if an error occurs.
+    :rtype: dict or None
+    """
     try:
         # if no block number is given - fetch the latest block
         if block_num is None:
@@ -24,9 +38,6 @@ def get_block_info(block_num=None):
         witness = Witness(block["witness"], blockchain_instance=peerplays)
 
         num_transactions = len(block["transactions"])
-
-        
-
         # create a dictionary with the block information
         block_info = {
             "Current block number": block_num,
@@ -38,9 +49,10 @@ def get_block_info(block_num=None):
             "Number of Transactions": num_transactions
         }
 
-        logger.info(f"Successfully fetched block {block_num}")
+        logger.info("Successfully fetched block %s", block_num)
         return block_info
+
+    except Exception as exception:
+        logger.error("Error fetching block %s: %s", block_num, exception, exc_info=True)
+    return None
     
-    except Exception as e:
-        logger.error(f"Error fetching block {block_num}: {e}", exc_info=True)
-        return None

@@ -3,46 +3,30 @@ This is the main application module.
 """
 
 import logging
-import time
-from config import api_url
 
-from peerplays.exceptions import AccountDoesNotExistsException
-
-
-from flask import Flask, render_template
+from flask import Flask
 from flask import jsonify
 from flask import request
-from cache_config import cache
 from flask_cors import CORS
-from flask_socketio import SocketIO
-from flask_socketio import Namespace
+from peerplays.exceptions import AccountDoesNotExistsException
+from cache_config import cache
 
-from peerplays.peerplays import PeerPlays
-from peerplays.asset import Asset
-from peerplays.amount import Amount
-
-from src.accounts.getAccount import get_account_info
+from src.accounts.get_account import get_account_info
 from src.accounts.witnesses.active_witnesses import list_active_witnesses
 from src.accounts.witnesses.witness_count import witness_count
-from src.accounts.accountHistory import get_account_history
-from src.accounts.sons.activeSons import get_active_sons
-
+from src.accounts.sons.active_sons import get_active_sons
+from src.accounts.account_history import get_account_history
 
 from src.blocks import get_block_info
 
-from src.getLatestTransactions import get_latest_transactions
+from src.get_latest_transactions import get_latest_transactions
 from src.latestBlock import get_latest_block
 
-from src.supply.common import get_supplies, peerplays
 from src.supply.supply_details import get_supply_details
 from src.supply.max_supply import max_supply
 from src.supply.total_supply import total_supply
 from src.supply.circulating_supply import circulating_supply
-from src.supply.richList import rich_list
-
-
-
-
+from src.supply.rich_list import rich_list
 
 app = Flask(__name__)
 
@@ -50,8 +34,9 @@ app = Flask(__name__)
 
 CORS(app, resources={r"/*": {"origins": "*"}})
 cache.init_app(app)
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-
+logging.basicConfig(level=logging.INFO, 
+                    format='%(asctime)s - %(name)s - '
+                           '%(levelname)s - %(message)s')
 @app.route('/api/latest_block_num', methods=['GET'])
 def latest_block_num():
     """
@@ -141,7 +126,7 @@ def block(block_num):
     """
     block_info = get_block_info(block_num)
     if block_info is not None:
-        logging.info(f"Page Load: Successfully fetched block {block_num}")
+        logging.info("Page Load: Successfully fetched block %s", block_num)
         return jsonify(block_info=block_info)
     else:
         return "Error fetching block information", 400
@@ -151,8 +136,8 @@ def transactions():
     """
     This endpoint returns the latest transactions.
     """
-    transactions = get_latest_transactions()
-    return jsonify(transactions=transactions)
+    latest_transactions = get_latest_transactions()
+    return jsonify(transactions=latest_transactions)
 
 @app.route('/api/account_history/<account_name>')
 def account_history(account_name):
@@ -168,22 +153,23 @@ def account_info(account_name):
     This endpoint returns the account information for the given account name.
     """
     try:
-        account_info = get_account_info(account_name)
-        return jsonify(account_info=account_info)
+        info = get_account_info(account_name)
+        return jsonify(account_info=info)
     except AccountDoesNotExistsException:
         return jsonify(error="Account does not exist"), 404
-    except Exception as e:
-        return str(e), 400
-    
+    except Exception as error:
+        return str(error), 400
 
 @app.route('/api/accounts/witnesses', methods=['GET'])
-def activeWitnesses():
+def active_witnesses():
     """
     This endpoint returns the list of active witnesses.
     """
     witness_list = list_active_witnesses()
-    default_attributes = ['id', 'witness_account', 'signing_key', 'total_votes', 'url', 'total_missed', 'last_confirmed_block_num']
-
+    default_attributes = [
+    'id', 'witness_account', 'signing_key', 'total_votes', 
+    'url', 'total_missed', 'last_confirmed_block_num'
+]
     if witness_list is not None:
         return jsonify(witness_list=witness_list, default_attributes=default_attributes)
     else:
