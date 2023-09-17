@@ -128,8 +128,7 @@ def block(block_num):
     if block_info is not None:
         logging.info("Page Load: Successfully fetched block %s", block_num)
         return jsonify(block_info=block_info)
-    else:
-        return "Error fetching block information", 400
+    return "Error fetching block information", 400
 
 @app.route('/api/transactions')
 def transactions():
@@ -172,8 +171,7 @@ def active_witnesses():
 ]
     if witness_list is not None:
         return jsonify(witness_list=witness_list, default_attributes=default_attributes)
-    else:
-        return "Error fetching witness information", 400
+    return "Error fetching witness information", 400
 
 @app.route('/api/accounts/witness_count', methods=['GET'])
 def get_witnesses():

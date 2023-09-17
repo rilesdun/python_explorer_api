@@ -14,18 +14,18 @@ ASSET_IDS = {
     "hbd": "1.3.23"
     }
 
-def sats_to_fixed(amount, P):
+def sats_to_fixed(amount, P): # pylint: disable=invalid-name
     """
     Convert an amount in satoshis to a fixed point number
     """
-    V = int(amount) / 10**P
+    V = int(amount) / 10**P # pylint: disable=invalid-name
     return f"{V:.{P}f}"
 
 def get_supplies(asset):
     """
     Get the supply details for an asset
     """
-    P = asset["precision"]
+    P = asset["precision"] # pylint: disable=invalid-name
     max_supply = sats_to_fixed(asset["options"]["max_supply"], P)
     ddo = asset.blockchain.rpc.get_objects([asset["dynamic_asset_data_id"]])[0]
     current_supply = sats_to_fixed(ddo["current_supply"], P)

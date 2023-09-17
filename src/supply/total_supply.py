@@ -13,6 +13,6 @@ def total_supply(coin_name):
     asset_id = ASSET_IDS.get(coin_name)
     if asset_id is None:
         return Response("Invalid coin name", status=400)
-    A = Asset(asset_id, blockchain_instance=peerplays)
+    A = Asset(asset_id, blockchain_instance=peerplays) # pylint: disable=invalid-name
     supply = get_supplies(A)["total"]
     return Response(supply, content_type='text/plain')
