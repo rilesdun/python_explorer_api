@@ -32,12 +32,14 @@ jobs:
 
       - name: Install Bandit
         run: pip install bandit
-
-      - name: Run Bandit and Generate HTML Report
+      
+      - name: Create report directory
+        run: mkdir -p bandit-security-report
+          
+      - name: Run Bandit and generate report
         run: |
-          bandit -r . -f json -o bandit-security-report/bandit-report.json
-          python json_to_html.py bandit-report.json > bandit-security-report/bandit-report.html
-
+          bandit -r src/ -f json -o bandit-security-report/bandit-report.json
+          python json_to_html.py bandit-security-report/bandit-report.json > bandit-security-report/bandit-report.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
