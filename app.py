@@ -20,7 +20,7 @@ from src.accounts.account_history import get_account_history
 from src.blocks import get_block_info
 
 from src.get_latest_transactions import get_latest_transactions
-from src.latestBlock import get_latest_block
+from src.latest_block import get_latest_block
 
 from src.supply.supply_details import get_supply_details
 from src.supply.max_supply import max_supply
@@ -34,7 +34,7 @@ app = Flask(__name__)
 
 CORS(app, resources={r"/*": {"origins": "*"}})
 cache.init_app(app)
-logging.basicConfig(level=logging.INFO, 
+logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - '
                            '%(levelname)s - %(message)s')
 @app.route('/api/latest_block_num', methods=['GET'])

@@ -1,6 +1,10 @@
-from .common import get_supplies, peerplays, ASSET_IDS
+"""
+This module contains the max_supply function, which returns the maximum supply of a coin.
+"""
 from peerplays.asset import Asset
 from flask import Response
+from src.supply.common import get_supplies, peerplays, ASSET_IDS
+
 
 ASSET_IDS = {
     "ppy": "1.3.0",
@@ -12,6 +16,9 @@ ASSET_IDS = {
 }
 
 def max_supply(coin_name):
+    """ 
+    This endpoint returns the maximum supply for the given coin name.
+    """
     asset_id = ASSET_IDS.get(coin_name)
     if asset_id is None:
         return Response("Invalid coin name", status=400)

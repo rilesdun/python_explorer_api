@@ -1,6 +1,7 @@
+"""
+Common functions for supply endpoints
+"""
 from peerplays.peerplays import PeerPlays
-from peerplays.asset import Asset
-from peerplays.amount import Amount
 from config import api_url
 
 peerplays = PeerPlays(api_url)
@@ -14,10 +15,16 @@ ASSET_IDS = {
     }
 
 def sats_to_fixed(amount, P):
+    """
+    Convert an amount in satoshis to a fixed point number
+    """
     V = int(amount) / 10**P
-    return "{:.{prec}f}".format(V, prec=P)
+    return f"{V:.{P}f}"
 
 def get_supplies(asset):
+    """
+    Get the supply details for an asset
+    """
     P = asset["precision"]
     max_supply = sats_to_fixed(asset["options"]["max_supply"], P)
     ddo = asset.blockchain.rpc.get_objects([asset["dynamic_asset_data_id"]])[0]

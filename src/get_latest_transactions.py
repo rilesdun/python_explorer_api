@@ -1,3 +1,6 @@
+"""
+This module is used to get the latest transactions from the Peerplays blockchain.
+"""
 from peerplays import PeerPlays
 from peerplays.block import Block
 from config import api_url
@@ -5,6 +8,9 @@ from config import api_url
 peerplays = PeerPlays(api_url)
 
 def get_block_with_transactions(block_num):
+    """
+    This function returns the block information for the given block number.
+    """
     block = Block(block_num, blockchain_instance=peerplays)
     if block["transactions"]:
         return {
@@ -14,6 +20,9 @@ def get_block_with_transactions(block_num):
     return None
 
 def get_latest_transactions(num_transactions=10):
+    """
+    This function returns the latest transactions.
+    """
     latest_block_num = peerplays.info()["head_block_number"]
     transactions = []
 

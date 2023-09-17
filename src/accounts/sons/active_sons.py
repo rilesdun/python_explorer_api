@@ -27,7 +27,7 @@ def get_active_sons():
                 account_name = account_info["name"]
                 obj["son_account"] = account_name
                 results.append(obj)
-                son_count += 1 
+                son_count += 1
                 object_id_number += 1
         except Exception as error:
             print(f"Error fetching object {object_id}: {error}", file=sys.stderr)

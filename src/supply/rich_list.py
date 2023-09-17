@@ -1,3 +1,6 @@
+"""
+Rich list for a given coin
+"""
 from peerplays.asset import Asset
 from flask import jsonify
 from src.supply.common import sats_to_fixed, peerplays, ASSET_IDS

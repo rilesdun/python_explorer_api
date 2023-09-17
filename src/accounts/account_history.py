@@ -8,10 +8,11 @@ from config import api_url
 
 peerplays = PeerPlays(api_url)
 
-"""
-retrieve account history
-"""
+
 def get_account_history(account_name):
+    """
+    retrieve account history
+    """
     account = Account(account_name, blockchain_instance=peerplays)
 
     account_history = list(account.history())

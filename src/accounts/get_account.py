@@ -1,3 +1,6 @@
+"""
+This module contains the function to get account information.
+"""
 from peerplays.account import Account
 from peerplays import PeerPlays
 from config import api_url
@@ -5,6 +8,9 @@ from config import api_url
 peerplays = PeerPlays(api_url)
 
 def get_account_info(account_name):
+    """
+    This function returns the account information for the given account name.
+    """
     account = Account(account_name, blockchain_instance=peerplays)
     account_info = {
         "id": account["id"],
