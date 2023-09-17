@@ -54,4 +54,4 @@ def json_to_html(input_file, output_file):
         f.write(html_content)
 
 if __name__ == "__main__":
-    json_to_html('bandit-security-report/bandit-report.json', 'bandit-security-report/bandit-report.html')
+    json_to_html('bandit-security-report/bandit-report.json', 'bandit-security-report/index.html')

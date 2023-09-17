@@ -36,7 +36,7 @@ jobs:
       - name: Run Bandit and generate report
         run: |
           bandit -r src/ -f json -o bandit-security-report/bandit-report.json
-          python json_to_html.py bandit-security-report/bandit-report.json > bandit-security-report/bandit-report.html
+          python json_to_html.py bandit-security-report/bandit-report.json > bandit-security-report/index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
