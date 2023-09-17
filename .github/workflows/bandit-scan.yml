@@ -1,37 +1,51 @@
-name: Custom Bandit Security Scan
+name: Bandit Scan and Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  bandit-scan:
+  scan-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ['3.9', '3.10', '3.11']
 
     steps:
-    - name: Check out code
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-    - name: Install Bandit
-      run: pip install bandit
+      - name: Install Bandit
+        run: pip install bandit
 
-    - name: Run Bandit
-      run: bandit -r . -f json -o bandit-report-${{ matrix.python-version }}.json
+      - name: Run Bandit and Generate HTML Report
+        run: |
+          bandit -r . -f json -o bandit-report.json
+          python json_to_html.py bandit-report.json > bandit-report.html
 
-    - name: Upload Bandit Report as Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: bandit-report-${{ matrix.python-version }}
-        path: bandit-report-${{ matrix.python-version }}.json
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: './bandit-report.html'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
