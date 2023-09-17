@@ -1,30 +1,37 @@
-name: Security check - Bandit
+name: Custom Bandit Security Scan
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build:
+  bandit-scan:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
-        python-version: [ '2.7.17', '3.6.10' ]
-    name: Python ${{ matrix.python-version }} ${{ matrix.os }} 
+        python-version: [3.9, 3.10, 3.11]  
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Check out code
+      uses: actions/checkout@v2
 
-      - name: Python security check using Bandit and output as JSON
-        uses: kmcquade/bandit-report-artifacts-json@0.0.1
-        with:
-          python_version: ${{ matrix.python-version }}
-          project_path: .
-          ignore_failure: false
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
 
-      - name: Security check report artifacts
-        uses: actions/upload-artifact@v2
-        # if: failure()
-        with:
-          name: Security report
-          path: output/
+    - name: Install Bandit
+      run: pip install bandit
+
+    - name: Run Bandit
+      run: bandit -r . -f json -o bandit-report-${{ matrix.python-version }}.json
+
+    - name: Upload Bandit Report as Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: bandit-report-${{ matrix.python-version }}
+        path: bandit-report-${{ matrix.python-version }}.json
