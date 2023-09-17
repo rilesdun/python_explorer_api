@@ -36,7 +36,8 @@ jobs:
       - name: Run Bandit and Generate HTML Report
         run: |
           bandit -r . -f json -o bandit-report.json
-          python json_to_html.py bandit-report.json > bandit-report.html
+          python json_to_html.py bandit-report.json > bandit-security-report/bandit-report.html
+
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
@@ -44,7 +45,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: './bandit-report.html'
+          path: './bandit-security-report/bandit-report.html'
 
       - name: Deploy to GitHub Pages
         id: deployment
