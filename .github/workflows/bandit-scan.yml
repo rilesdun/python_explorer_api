@@ -1,24 +1,30 @@
-name: Bandit
-on:
-  pull_request:
-  push:
-    branches:
-      - main
-  release:
-    types:
-      - created
+name: Security check - Bandit
+
+on: push
 
 jobs:
-  bandit:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        python-version: [ '2.7.17', '3.6.10' ]
+    name: Python ${{ matrix.python-version }} ${{ matrix.os }} 
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Python security check using Bandit and output as JSON
+        uses: kmcquade/bandit-report-artifacts-json@0.0.1
         with:
-          fetch-depth: 0 #get fuller history
-      - name: Run Bandit Report
-        uses: libertyy/py3-bandit-check@v2
-      - name: Save Bandit txt Report
-        if: ${{ always() }}
+          python_version: ${{ matrix.python-version }}
+          project_path: .
+          ignore_failure: false
+
+      - name: Security check report artifacts
         uses: actions/upload-artifact@v2
+        # if: failure()
         with:
-          path: ${{ RUNNER.temp }}/_github_home/bandit_report.out
+          name: Security report
+          path: output/
