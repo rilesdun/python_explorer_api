@@ -156,7 +156,7 @@ def account_info(account_name):
         return jsonify(account_info=info)
     except AccountDoesNotExistsException:
         return jsonify(error="Account does not exist"), 404
-    except Exception as error:
+    except Exception as error: # pylint: disable=broad-except
         return str(error), 400
 
 @app.route('/api/accounts/witnesses', methods=['GET'])
@@ -189,4 +189,4 @@ def active_sons():
     return sons
 
 if __name__ == '__main__':
-    app.run(app)
+    app.run()

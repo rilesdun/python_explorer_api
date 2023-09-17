@@ -29,7 +29,7 @@ def get_active_sons():
                 results.append(obj)
                 son_count += 1
                 object_id_number += 1
-        except Exception as error:
+        except Exception as error: # pylint: disable=broad-except
             print(f"Error fetching object {object_id}: {error}", file=sys.stderr)
             break
 

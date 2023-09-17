@@ -52,7 +52,7 @@ def get_block_info(block_num=None):
         logger.info("Successfully fetched block %s", block_num)
         return block_info
 
-    except Exception as exception:
+    except Exception as exception: # pylint: disable=broad-except
         logger.error("Error fetching block %s: %s", block_num, exception, exc_info=True)
     return None
     
