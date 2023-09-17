@@ -35,7 +35,7 @@ jobs:
       
       - name: Create report directory
         run: mkdir -p bandit-security-report
-          
+
       - name: Run Bandit and generate report
         run: |
           bandit -r src/ -f json -o bandit-security-report/bandit-report.json
@@ -47,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: './bandit-security-report/bandit-report.html'
+          path: './bandit-security-report/'
 
       - name: Deploy to GitHub Pages
         id: deployment
