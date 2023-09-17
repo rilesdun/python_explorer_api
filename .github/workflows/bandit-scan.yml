@@ -35,7 +35,7 @@ jobs:
 
       - name: Run Bandit and Generate HTML Report
         run: |
-          bandit -r . -f json -o bandit-report.json
+          bandit -r . -f json -o bandit-security-report/bandit-report.json
           python json_to_html.py bandit-report.json > bandit-security-report/bandit-report.html
 
 
