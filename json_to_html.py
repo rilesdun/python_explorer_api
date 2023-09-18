@@ -1,5 +1,5 @@
 """
-File for storing json to html formatting of bandit scans
+Script to convert a JSON file bandit report to an HTML file
 """
 import json
 
@@ -27,18 +27,35 @@ def json_to_html(input_file, output_file):
                     <th>File</th>
                     <th>Lines of Code</th>
                     <th>Skipped Tests</th>
+                    <th>Confidence High</th>
+                    <th>Confidence Low</th>
+                    <th>Confidence Medium</th>
+                    <th>Confidence Undefined</th>
+                    <th>Severity High</th>
+                    <th>Severity Low</th>
+                    <th>Severity Medium</th>
+                    <th>Severity Undefined</th>
+                    <th>Nosec</th>
                 </tr>
             </thead>
             <tbody>
     """
 
-    # Add table rows for each file's metrics
     for file, metrics in data['metrics'].items():
         html_content += f"""
         <tr>
             <td>{file}</td>
             <td>{metrics['loc']}</td>
             <td>{metrics['skipped_tests']}</td>
+            <td>{metrics['CONFIDENCE.HIGH']}</td>
+            <td>{metrics['CONFIDENCE.LOW']}</td>
+            <td>{metrics['CONFIDENCE.MEDIUM']}</td>
+            <td>{metrics['CONFIDENCE.UNDEFINED']}</td>
+            <td>{metrics['SEVERITY.HIGH']}</td>
+            <td>{metrics['SEVERITY.LOW']}</td>
+            <td>{metrics['SEVERITY.MEDIUM']}</td>
+            <td>{metrics['SEVERITY.UNDEFINED']}</td>
+            <td>{metrics['nosec']}</td>
         </tr>
         """
 
@@ -49,7 +66,6 @@ def json_to_html(input_file, output_file):
     </html>
     """
 
-    # save the HTML content
     with open(output_file, 'w', encoding='utf-8') as f: # pylint: disable=invalid-name
         f.write(html_content)
 

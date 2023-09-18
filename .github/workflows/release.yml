@@ -1,4 +1,7 @@
-name: CI/CD Workflow
+name: Semantic Release
+
+permissions:
+  contents: write
 
 on:
   push:
