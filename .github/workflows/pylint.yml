@@ -31,4 +31,22 @@ jobs:
 
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py')
+        pylint $(git ls-files '*.py') | tee pylint-output.txt
+        score=$(tail -2 pylint-output.txt | grep -oP '[0-9\.]+/10' | cut -d'/' -f1)
+        echo "PYLINT_SCORE=$score" >> $GITHUB_ENV
+
+    - name: Install Anybadge
+      run: pip install anybadge
+      
+    - name: Generate Pylint Badge
+      run: anybadge --value=${{ env.PYLINT_SCORE }} --file=badges/pylint.svg pylint
+
+    - name: Commit and push badge
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add badges/pylint.svg
+        git commit -m "Add pylint badge" || echo "No changes to commit"
+        git push
+    
+      

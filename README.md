@@ -1,5 +1,7 @@
 # peerplays-explorer
 
+![Pylint Badge](path_to_badge/pylint.svg)
+
 Flask application for viewing information about the peerplays blockchain
 
 Install dependencies:
