@@ -37,7 +37,11 @@ jobs:
 
     - name: Install Anybadge
       run: pip install anybadge
-      
+    
+    - name: Create badges directory
+      run: mkdir -p badges
+
+
     - name: Generate Pylint Badge
       run: anybadge --value=${{ env.PYLINT_SCORE }} --file=badges/pylint.svg pylint
 
