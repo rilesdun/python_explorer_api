@@ -44,7 +44,7 @@ jobs:
         pylint $(git ls-files '*.py') 
 
 
-  scan-and-upload:
+  bandit-scan:
     runs-on: ubuntu-latest
 
     steps:
@@ -100,6 +100,7 @@ jobs:
         git add CHANGELOG.md
         git commit -m "chore: update CHANGELOG.md" || echo "No changes to commit"
         git push
+    needs: [pylint, bandit-scan]
 
   dockerhub_publish:
     runs-on: ubuntu-latest
@@ -134,3 +135,4 @@ jobs:
 
     - name: Log out from Docker Hub
       run: docker logout ${{ env.REGISTRY }}
+    needs: [release]
