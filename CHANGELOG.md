@@ -1,3 +1,10 @@
+## [0.1.3](https://github.com/rilesdun/python_explorer_api/compare/v0.1.2...v0.1.3) (2023-09-19)
+
+
+### Bug Fixes
+
+* publishing docker builds after releases ([d7a21d7](https://github.com/rilesdun/python_explorer_api/commit/d7a21d7879f65bd810d1ba01156668f22038afba))
+
 ## [0.1.2](https://github.com/rilesdun/python_explorer_api/compare/v0.1.1...v0.1.2) (2023-09-19)
 
 ### Bug Fixes
