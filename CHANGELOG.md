@@ -1,6 +1,5 @@
 ## [0.1.2](https://github.com/rilesdun/python_explorer_api/compare/v0.1.1...v0.1.2) (2023-09-19)
 
-
 ### Bug Fixes
 
 * docker builds and pushes, condensed workflow ([d7e9741](https://github.com/rilesdun/python_explorer_api/commit/d7e97411bfca8dca595bfc48cc95e8a161840839))
@@ -9,9 +8,6 @@
 * workflow condensing ([0980310](https://github.com/rilesdun/python_explorer_api/commit/0980310fb8d103de32f22992196ab3cfe75c17fb))
 * workflow condensing fixes ([c9fc542](https://github.com/rilesdun/python_explorer_api/commit/c9fc54215eafc93c450a1def985d7179a1a6269d))
 
-# Changelog
-
-All notable changes to this project will be documented in this file.
 
 ## [0.1.0] - 09-18-2023
 
