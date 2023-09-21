@@ -1,3 +1,10 @@
+## [0.1.4](https://github.com/rilesdun/python_explorer_api/compare/v0.1.3...v0.1.4) (2023-09-21)
+
+
+### Bug Fixes
+
+* deployment step to public server ([8b0ca07](https://github.com/rilesdun/python_explorer_api/commit/8b0ca07630c1840f67ba4827cc51a23fee1b27d0))
+
 ## [0.1.3](https://github.com/rilesdun/python_explorer_api/compare/v0.1.2...v0.1.3) (2023-09-19)
 
 
