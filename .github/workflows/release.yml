@@ -148,3 +148,25 @@ jobs:
 
     - name: Log out from Docker Hub
       run: docker logout ${{ env.REGISTRY }}
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [dockerhub_publish]
+    steps:
+    - name: SSH Key Setup
+      env:
+        PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+      run: |
+        echo "$PRIVATE_KEY" > deploy_key
+        chmod 600 deploy_key
+
+    - name: Deploy on VM
+      run: |
+        ssh -o StrictHostKeyChecking=no -i deploy_key ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} << 'ENDSSH'
+        docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.get-latest-tag.outputs.tag }}
+        docker stop explorer-api || true
+        docker rm explorer-api || true
+        docker run -d --name my-app ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.get-latest-tag.outputs.tag }}
+        ENDSSH
+    
