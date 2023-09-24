@@ -1,3 +1,11 @@
+## [0.1.6](https://github.com/rilesdun/python_explorer_api/compare/v0.1.5...v0.1.6) (2023-09-24)
+
+
+### Bug Fixes
+
+* fix artifact uploading ([ee605c7](https://github.com/rilesdun/python_explorer_api/commit/ee605c712a3853d3408fe2b1299c9a90c7f03f62))
+* fix artifact uploading ([3a7dfd6](https://github.com/rilesdun/python_explorer_api/commit/3a7dfd69c213a52c221ac8781c41ce8d30d4e838))
+
 ## [0.1.5](https://github.com/rilesdun/python_explorer_api/compare/v0.1.4...v0.1.5) (2023-09-24)
 
 
