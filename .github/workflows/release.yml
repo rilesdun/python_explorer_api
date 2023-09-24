@@ -123,12 +123,6 @@ jobs:
         name: latest-tag
         path: ./tag.txt
 
-    - name: Upload tag as artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: latest-tag
-        path: ./tag.txt
-
     - name: Log into Docker Hub
       uses: docker/login-action@v3.0.0
       with:
