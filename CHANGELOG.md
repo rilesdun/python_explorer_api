@@ -1,3 +1,10 @@
+## [0.1.5](https://github.com/rilesdun/python_explorer_api/compare/v0.1.4...v0.1.5) (2023-09-24)
+
+
+### Bug Fixes
+
+* rebase from main, start adding changes on dev ([#2](https://github.com/rilesdun/python_explorer_api/issues/2)) ([a0f575d](https://github.com/rilesdun/python_explorer_api/commit/a0f575d20fe0b7c7fb853263d8a5d8a36a1a13f8))
+
 ## [0.1.4](https://github.com/rilesdun/python_explorer_api/compare/v0.1.3...v0.1.4) (2023-09-21)
 
 
