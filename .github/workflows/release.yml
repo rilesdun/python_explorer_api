@@ -115,7 +115,13 @@ jobs:
     - name: Get the latest tag
       id: get-latest-tag
       run: |
-        echo "::set-output name=tag::$(git tag --sort=taggerdate | tail -1)"    
+        echo "$(git tag --sort=taggerdate | tail -1)" > tag.txt
+
+    - name: Upload tag as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: latest-tag
+        path: ./tag.txt
 
     - name: Upload tag as artifact
       uses: actions/upload-artifact@v2
@@ -185,4 +191,4 @@ jobs:
         docker rm explorer-api || true
         docker run -d --name explorer-api ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
         ENDSSH
-    
+  
