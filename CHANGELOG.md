@@ -1,3 +1,10 @@
+## [0.1.7](https://github.com/rilesdun/python_explorer_api/compare/v0.1.6...v0.1.7) (2023-09-24)
+
+
+### Bug Fixes
+
+* fix job tagging ([0dac58b](https://github.com/rilesdun/python_explorer_api/commit/0dac58b3575d320d0f7f9fe88d64b0835b36a9a4))
+
 ## [0.1.6](https://github.com/rilesdun/python_explorer_api/compare/v0.1.5...v0.1.6) (2023-09-24)
 
 
