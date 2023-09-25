@@ -1,3 +1,10 @@
+## [0.1.8](https://github.com/rilesdun/python_explorer_api/compare/v0.1.7...v0.1.8) (2023-09-25)
+
+
+### Bug Fixes
+
+* artifacts and tagging variables ([a7b14ac](https://github.com/rilesdun/python_explorer_api/commit/a7b14ac4d504e9f834ddfed06ea5f503198fd5ef))
+
 ## [0.1.7](https://github.com/rilesdun/python_explorer_api/compare/v0.1.6...v0.1.7) (2023-09-24)
 
 
