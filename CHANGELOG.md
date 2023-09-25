@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/rilesdun/python_explorer_api/compare/v1.0.0...v1.0.1) (2023-09-25)
+
+
+### Bug Fixes
+
+* docker run port exposing ([d9605c4](https://github.com/rilesdun/python_explorer_api/commit/d9605c445096632056a307977643939b8efc6c0f))
+
 # 1.0.0 (2023-09-25)
 
 
