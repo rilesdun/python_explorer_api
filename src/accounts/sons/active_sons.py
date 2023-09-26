@@ -2,15 +2,13 @@
 Module to fetch active sons from PeerPlays
 """
 import sys
-from peerplays import PeerPlays
 from src.accounts.get_account import get_account_info
-from src.supply.common import api_url
+from peerplays_instance import peerplays
 
 def get_active_sons():
     """
     Function to get active sons from PeerPlays
     """
-    peerplays = PeerPlays(api_url)
 
     object_id_prefix = "1.33."
     object_id_number = 0

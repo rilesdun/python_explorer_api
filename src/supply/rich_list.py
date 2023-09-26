@@ -3,7 +3,8 @@ Rich list for a given coin
 """
 from peerplays.asset import Asset
 from flask import jsonify
-from src.supply.common import sats_to_fixed, peerplays, ASSET_IDS
+from src.supply.common import sats_to_fixed,ASSET_IDS
+from peerplays_instance import peerplays
 
 
 def rich_list(coin_name, num="25"):

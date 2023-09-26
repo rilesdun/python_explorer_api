@@ -3,16 +3,13 @@ Functions related to peerplays blocks
 """
 
 import logging
-from peerplays import PeerPlays
+
 from peerplays.block import Block
 from peerplays.witness import Witness
-from config import api_url
+from peerplays_instance import peerplays
 
 logger = logging.getLogger(__name__)
 
-
-
-peerplays = PeerPlays(api_url)
 
 
 def get_block_info(block_num=None):

@@ -1,10 +1,6 @@
 """
 Common functions for supply endpoints
 """
-from peerplays.peerplays import PeerPlays
-from config import api_url
-
-peerplays = PeerPlays(api_url)
 
 ASSET_IDS = {
     "ppy": "1.3.0",

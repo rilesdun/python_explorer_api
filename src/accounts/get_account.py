@@ -2,10 +2,7 @@
 This module contains the function to get account information.
 """
 from peerplays.account import Account
-from peerplays import PeerPlays
-from config import api_url
-
-peerplays = PeerPlays(api_url)
+from peerplays_instance import peerplays
 
 def get_account_info(account_name):
     """

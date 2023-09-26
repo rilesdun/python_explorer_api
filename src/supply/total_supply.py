@@ -3,7 +3,8 @@ This module contains the total supply endpoint.
 """
 from peerplays.asset import Asset
 from flask import Response
-from src.supply.common import get_supplies, peerplays, ASSET_IDS
+from src.supply.common import get_supplies, ASSET_IDS
+from peerplays_instance import peerplays
 
 
 def total_supply(coin_name):

@@ -2,15 +2,10 @@
 This module contains functions to fetch the list of active witnesses.
 """
 import logging
-from peerplays import PeerPlays
 from peerplays.witness import Witnesses
 from peerplays.account import Account
 from cache_config import cache
-
-
-
-# connect to a peerplays1 node
-peerplays = PeerPlays("wss://ca.peerplays.info/api")
+from peerplays_instance import peerplays
 
 logger = logging.getLogger(__name__)
 
