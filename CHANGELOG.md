@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/rilesdun/python_explorer_api/compare/v1.0.1...v1.0.2) (2023-09-26)
+
+
+### Bug Fixes
+
+* connect containers to docker network ([90e0863](https://github.com/rilesdun/python_explorer_api/commit/90e0863a9985013ee5b4cfaba2ca4a4b8cfcb60d))
+
 ## [1.0.1](https://github.com/rilesdun/python_explorer_api/compare/v1.0.0...v1.0.1) (2023-09-25)
 
 
