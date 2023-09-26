@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/rilesdun/python_explorer_api/compare/v1.0.4...v1.0.5) (2023-09-26)
+
+
+### Bug Fixes
+
+* active-sons api_url ([a76a8e4](https://github.com/rilesdun/python_explorer_api/commit/a76a8e46a6e4b52356c2b1f152ff92620e11da49))
+
 ## [1.0.4](https://github.com/rilesdun/python_explorer_api/compare/v1.0.3...v1.0.4) (2023-09-26)
 
 
