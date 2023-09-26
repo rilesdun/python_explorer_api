@@ -32,7 +32,7 @@ app = Flask(__name__)
 
 # need to get correct origins - bad practice for CORS "*"
 
-CORS(app, resources={r"/*": {"origins": ["http://explorer-ui:8080"], "methods": ["GET"]}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 cache.init_app(app)
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - '
