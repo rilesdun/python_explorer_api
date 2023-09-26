@@ -1,3 +1,11 @@
+## [1.0.6](https://github.com/rilesdun/python_explorer_api/compare/v1.0.5...v1.0.6) (2023-09-26)
+
+
+### Bug Fixes
+
+* format error causing loop ([7510565](https://github.com/rilesdun/python_explorer_api/commit/75105656e99163cb195295632792f39912d454cf))
+* format error causing loop, pylint newline ([14f8650](https://github.com/rilesdun/python_explorer_api/commit/14f865002d81f60ac06de75bd06b51e44aa04fa8))
+
 ## [1.0.5](https://github.com/rilesdun/python_explorer_api/compare/v1.0.4...v1.0.5) (2023-09-26)
 
 
