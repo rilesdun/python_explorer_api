@@ -184,5 +184,5 @@ jobs:
         docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.tag }}
         docker stop explorer-api || true
         docker rm explorer-api || true
-        docker run -d -p 5000:5000 --name explorer-api ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.tag }}
+        docker run -d --network=explorer -p 5000:5000 --name explorer-api ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.tag }}
         ENDSSH
