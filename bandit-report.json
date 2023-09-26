@@ -1,6 +1,6 @@
 {
   "errors": [],
-  "generated_at": "2023-09-26T21:50:30Z",
+  "generated_at": "2023-09-26T22:27:05Z",
   "metrics": {
     "_totals": {
       "CONFIDENCE.HIGH": 0,
@@ -11,7 +11,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 332,
+      "loc": 319,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -37,7 +37,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 15,
+      "loc": 13,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -50,7 +50,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 21,
+      "loc": 19,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -63,7 +63,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 33,
+      "loc": 31,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -102,7 +102,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 27,
+      "loc": 26,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -115,7 +115,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 40,
+      "loc": 38,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -128,7 +128,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 31,
+      "loc": 29,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -141,7 +141,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 17,
+      "loc": 15,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -154,7 +154,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 16,
+      "loc": 17,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -167,7 +167,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 34,
+      "loc": 31,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -180,7 +180,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 16,
+      "loc": 17,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -193,7 +193,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 26,
+      "loc": 27,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -206,7 +206,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 14,
+      "loc": 13,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -219,7 +219,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 16,
+      "loc": 17,
       "nosec": 0,
       "skipped_tests": 0
     }
