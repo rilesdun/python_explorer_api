@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/rilesdun/python_explorer_api/compare/v1.0.6...v1.0.7) (2023-09-26)
+
+
+### Bug Fixes
+
+* peerplays class recreations for sqlite ([cca3a4b](https://github.com/rilesdun/python_explorer_api/commit/cca3a4b1a3af07f995678dc4ada93fdc330e1054))
+
 ## [1.0.6](https://github.com/rilesdun/python_explorer_api/compare/v1.0.5...v1.0.6) (2023-09-26)
 
 
