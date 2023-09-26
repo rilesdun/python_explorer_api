@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/rilesdun/python_explorer_api/compare/v1.0.2...v1.0.3) (2023-09-26)
+
+
+### Bug Fixes
+
+* cors tweaking ([2668ea4](https://github.com/rilesdun/python_explorer_api/commit/2668ea42f85130f8cffb2e550bcb9e98e5f338c3))
+
 ## [1.0.2](https://github.com/rilesdun/python_explorer_api/compare/v1.0.1...v1.0.2) (2023-09-26)
 
 
