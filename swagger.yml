@@ -1,0 +1,19 @@
+paths:
+  /api/latest_block_num:
+    get:
+      summary: "Get latest block number"
+      tags:
+        - "Blocks"
+      responses:
+        200:
+          description: "Returns the latest block number"
+          schema:
+            $ref: "#/definitions/BlockNumber"
+definitions:
+  BlockNumber:
+    type: "object"
+    properties:
+      latest_block_num:
+        type: "integer"
+        description: "The latest block number"
+        default: "123"

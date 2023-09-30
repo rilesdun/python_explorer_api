@@ -7,6 +7,7 @@ import logging
 from flask import Flask
 from flask import jsonify
 from flask import request
+from flasgger import Swagger
 from flask_cors import CORS
 from peerplays.exceptions import AccountDoesNotExistsException
 from cache_config import cache
@@ -29,6 +30,7 @@ from src.supply.circulating_supply import circulating_supply
 from src.supply.rich_list import rich_list
 
 app = Flask(__name__)
+swagger = Swagger(app, template_file='swagger.yml')
 
 # need to get correct origins - bad practice for CORS "*"
 
