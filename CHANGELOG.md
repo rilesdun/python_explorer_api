@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/rilesdun/python_explorer_api/compare/v1.0.7...v1.0.8) (2023-10-01)
+
+
+### Bug Fixes
+
+* update .env.example to env variable ([5503a6e](https://github.com/rilesdun/python_explorer_api/commit/5503a6ebf45d2c6074bf4aa7fd5d8c8a6a61e013))
+
 ## [1.0.7](https://github.com/rilesdun/python_explorer_api/compare/v1.0.6...v1.0.7) (2023-09-26)
 
 
