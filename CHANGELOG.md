@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/rilesdun/python_explorer_api/compare/v1.0.8...v1.0.9) (2023-10-01)
+
+
+### Bug Fixes
+
+* env variables ([f1296af](https://github.com/rilesdun/python_explorer_api/commit/f1296af7b49c9158ff98da01743812831de9daac))
+
 ## [1.0.8](https://github.com/rilesdun/python_explorer_api/compare/v1.0.7...v1.0.8) (2023-10-01)
 
 
