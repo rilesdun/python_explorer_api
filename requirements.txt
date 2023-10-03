@@ -51,7 +51,7 @@ scrypt==0.8.13
 simple-websocket==0.10.1
 six==1.16.0
 treelib==1.6.4
-urllib3==2.0.4
+urllib3==2.0.6
 wcwidth==0.2.6
 websocket-client==0.59.0
 websockets==11.0.3
