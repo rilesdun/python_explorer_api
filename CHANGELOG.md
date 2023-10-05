@@ -1,3 +1,10 @@
+## [1.0.10](https://github.com/rilesdun/python_explorer_api/compare/v1.0.9...v1.0.10) (2023-10-05)
+
+
+### Bug Fixes
+
+* update .env.example to connect to testnet by default ([9ad5699](https://github.com/rilesdun/python_explorer_api/commit/9ad569969f52f0193a5c5906255c480e1727feb2))
+
 ## [1.0.9](https://github.com/rilesdun/python_explorer_api/compare/v1.0.8...v1.0.9) (2023-10-01)
 
 
