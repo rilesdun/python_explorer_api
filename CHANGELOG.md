@@ -1,3 +1,10 @@
+## [1.0.11](https://github.com/rilesdun/python_explorer_api/compare/v1.0.10...v1.0.11) (2023-10-05)
+
+
+### Bug Fixes
+
+* Update .env.example to testnet ([05acd0d](https://github.com/rilesdun/python_explorer_api/commit/05acd0da7a1e53dffae31249143c51d124d877a4))
+
 ## [1.0.10](https://github.com/rilesdun/python_explorer_api/compare/v1.0.9...v1.0.10) (2023-10-05)
 
 
