@@ -55,7 +55,7 @@ urllib3==2.0.4
 wcwidth==0.2.6
 websocket-client==0.59.0
 websockets==11.0.3
-Werkzeug==2.3.6
+Werkzeug==3.0.1
 wsproto==1.2.0
 yarl==1.9.2
 zope.event==5.0
